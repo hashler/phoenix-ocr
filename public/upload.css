@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=Mouse+Memoirs&family=Poppins:wght@300&display=swap');
+
+body{
+    font-family: 'Poppins', sans-serif;
+}
+
+h1,form{
+    text-align: center;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #111;
+}
+
+.active {
+    background-color: #e78146;
+}
+.top button,#file button {
+    background-color: #055b80;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.image{
+    width: 300px;
+    height: auto;
+}
+.center{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+}
+
+.top{
+    margin-top: 20px;
+}
+
+.top button a{
+    text-decoration: none;
+    color:#fff;
+}
+
+.top button a:visited,.top button a:link,.top button a:active{
+    color:#fff;
+}
+
+i{
+    font-size: 30px;
+}
+
+.main-content{
+    width: 750px;
+    max-width: fit-content;
+    margin-top: 50px;
+    border: 1px solid #000;
+}
+
+.text-editor-header{
+    padding: 5px;
+    border-bottom: 1px solid #000;
+}
+
+.text-editor-header .btn{
+    border: none;
+    outline: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.btn:hover{
+    color: rgb(0, 162, 255);
+}
+
+.content{
+    height: auto;
+    max-height: max-content;
+    outline: none;
+    padding: 10px;
+}
+
+.container,.row,[class*="col-lg"]{
+    border:1px solid #000;
+}
+
+.container{
+    margin-top: 5vh;
+    height: 90vh;
+}
+
+.body{
+    background-color: rgb(175, 45, 192);
+}
+
+.row,[class*="col-lg"]{
+    height: 90vh;
+}
+
+h1{
+    font-family: 'Mouse Memoirs', sans-serif;
+}
+
+.big-font{
+    font-size: 80px;
+    position: absolute;
+    top:50%;
+    left: 40%;
+    color: #fff;
+}
+
+.hide{
+    display: none;
+}
+
+.col-lg-9 .upload{
+    width: 20vw;
+    max-width: fit-content;
+    height: 20vh;
+    max-height: fit-content;
+    border: 1px dashed #000;
+    margin-top: 15vh;
+    margin-bottom: 5vh;
+    position: relative;
+    left: 35%;
+    font-family: 'Poppins', sans-serif;
+}
+
+.col-lg-3{
+    background-color: rgb(66, 6, 48);
+    color: #fff;
+}
+
+.poppins{
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+}
+
+.upload p{
+    position: relative;
+    top: 10%;
+}
+
+.upload .add{
+    width: 10vw;
+    height: 10vh;
+}
+
+.add-image{
+    margin-top: 15vh;
+}
+
+.fa{
+    font-size: 30px;
+    text-align: center;
+    /* margin-top: -7vh; */
+}
+
+.file-upload{
+    position: relative;
+    left: 45%;
+    display: flexbox;
+    align-items: center;
+    margin-top: 5vh;
+}
+
+.file{
+    position: relative;
+    margin-bottom: -5vh;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.sub{
+    position: relative;
+    margin-top: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sub button{
+    color: rgb(168, 204, 236);
+    background-color: rgb(115, 107, 221);
+    width: 20vw;
+    height: 8vh;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+}
+
+.text-edi{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

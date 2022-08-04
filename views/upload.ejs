@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="/public/upload.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container body">
+        <div class="row hide">
+             <div class="col-lg-3 text-center">
+                 <h1>Phoenix OCR</h1>
+             </div>
+            <div class="col-lg-9">
+                <p class="add-image text-center poppins">
+                    Upload the image with text and we provide the text that you want to get in the image!
+                </p>
+                <div class="text-edi">
+                    <div class="main-content">
+                        <div class="text-editor-header">
+                            <button type="button" class="btn" data-element="bold">
+                                <i class="fa fa-bold"></i>
+                            </button>
+                            <button type="button" class="btn" data-element="italic">
+                                <i class="fa fa-italic"></i>
+                            </button>
+                            <button type="button" class="btn" data-element="underline">
+                                <i class="fa fa-underline"></i>
+                            </button>
+                            <button type="button" class="btn" data-element="insertUnorderedList">
+                                <i class="fa fa-list-ul"></i>
+                            </button>
+                            <button type="button" class="btn" data-element="insertOrderedList">
+                                <i class="fa fa-list-ol"></i>
+                            </button>
+                            <button type="button" class="btn" data-element="createLink">
+                                <i class="fa fa-link"></i>
+                            </button>
+                            <button type="button" class="btn" data-element="justifyLeft">
+                                <i class="fa fa-align-left"></i>
+                            </button>
+                            <button type="button" class="btn" data-element="justifyRight">
+                                <i class="fa fa-align-right"></i>
+                            </button>
+                            <button type="button" class="btn" data-element="justifyCenter">
+                                <i class="fa fa-align-center"></i>
+                            </button>
+                            <button type="button" class="btn" data-element="justifyFull">
+                                <i class="fa fa-align-justify"></i>
+                            </button>
+                            <button type="button" class="btn" data-element="insertImage">
+                                <i class="fa fa-image"></i>
+                            </button>
+                            <button type="button" class="btn" data-element="undo">
+                                <i class="fa fa-undo"></i>
+                            </button>
+                            <button type="button" class="btn" data-element="redo">
+                                <i class="fa fa-redo"></i>
+                            </button>
+                        </div>
+                
+                        <div class="content" id="context" contenteditable="true">
+                            <%= title %>
+                        </div>
+                    </div>
+                </div>
+                <div class="sub">
+                    <div class="top">
+                        <button><a id="txt" href="javascript:htmlToPdf()">Save as .pdf</a></button>
+                        <button onclick="htmlToWord()"><a id="docx">Save as .docx</a></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h1 class="big-font text-center" id="header">Phoenix OCR</h1>
+        <!-- <i class="fa fa-spinner big-font" id="header" aria-hidden="true"></i> -->
+    </div>
+
+    <script>
+         async function mydisplay(){
+            let myPromise = new Promise((myResolve,reject) => {
+                var layout = document.querySelector(".row");
+                setTimeout(() => myResolve(layout),2000)
+            });
+            let result = await myPromise;
+            remove(result);
+        }
+
+        function remove(idea){
+            document.querySelector(".row").classList.remove("hide");
+            document.querySelector(".container").classList.remove("body");
+        }
+
+        mydisplay();
+
+
+            async function mydisplay1(){
+            let myPromise = new Promise((myResolve,reject) => {
+                var header = document.querySelector("#header");
+                setTimeout(() => myResolve(header),2000)
+            });
+            let result1 = await myPromise;
+            add(result1);
+        }
+
+        function add(renew){
+            document.getElementById("header").classList.add("hide");
+        }
+
+        mydisplay1();
+    </script>
+
+    <script>
+        const input = document.querySelector(".file-upload input[type='file']")
+        input.onchange = (e) => {
+            const [file] = e.target.files
+            document.querySelector("#file-name").innerHTML = file.name;
+        }
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.debug.js" ></script>
+
+
+    <script>
+        function htmlToPdf(){
+            var margins = [40,60,60,40];
+            var doc = new jsPDF();
+            doc.fromHTML(document.getElementById("context"),20,20,{width : 170 });
+            doc.save("hello.pdf");
+        }
+
+        function htmlToWord(){    
+            var header = "<html xmlns:o='urn:schemas-microsoft-com:office:office' "+
+                    "xmlns:w='urn:schemas-microsoft-com:office:word' "+
+                    "xmlns='http://www.w3.org/TR/REC-html40'>"+
+                    "<head><meta charset='utf-8'><title>Export HTML to Word Document with JavaScript</title></head><body>";
+            var footer = "</body></html>";
+            var sourceHTML = header+document.getElementById("context").innerHTML+footer;
+            
+            var source = 'data:application/vnd.ms-word;charset=utf-8,' + encodeURIComponent(sourceHTML);
+            var fileDownload = document.getElementById("docx");
+            fileDownload.href = source;
+            fileDownload.download = 'document.doc';
+            fileDownload.click();
+            }
+    </script>
+
+    <script>
+
+        const elements = document.querySelectorAll('.btn');
+
+        elements.forEach(element => {
+            element.addEventListener('click',() => {
+                let command = element.dataset['element'];
+
+                if(command == 'createLink' || command == 'insertIamge'){
+                    let url = prompt('Enter the link here: ','https://');
+                    document.execCommand(command,false,url);
+                }
+                else{
+                    document.execCommand(command,false,null);
+                }
+            })
+        })
+    </script>
+</body>
+</html>
